@@ -1,0 +1,9 @@
+VERSION
+
+/obj/
+/bin/
+
+/platforms/
+
+/languages/*.qm
+
