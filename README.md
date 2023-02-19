@@ -17,3 +17,18 @@ When you're done, you'll be able to boot from it.
 
 
 
+Download
+--------
+
+You can download this tool on the "[Releases](https://github.com/c0xc/UsbImgWriter/releases)" page.
+It should run on most Linux desktops, it could also be used in a Live system.
+
+
+
+Author
+------
+
+Philip Seeger (philip@c0xc.net)
+
+
+
