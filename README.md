@@ -25,6 +25,25 @@ It should run on most Linux desktops, it could also be used in a Live system.
 
 
 
+Live Linux
+----------
+
+This tool has a Live Linux downloader, which gives you a limited selection
+of Linux flavors. You can select one by double-clicking through
+the listed releases and on the desired image file.
+It will be downloaded and selected as source image,
+which can then be written to the USB device.
+
+![UsbImgWriter - Live Linux downloader](screenshots/USB_IMG_writer_004.png)
+
+Live Linux images can be very useful,
+for example if you're in a hostile (untrusted) environment
+where you have to recover some files from a computer
+or work on a network setup which may require debugging...
+The point is, these image files aren't just for installing Linux.
+
+
+
 Author
 ------
 

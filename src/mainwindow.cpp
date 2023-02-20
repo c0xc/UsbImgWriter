@@ -44,8 +44,13 @@ MainWindow::MainWindow(QWidget *parent)
     lbl_img_title = new QLabel(tr("Select image file"));
     QPushButton *btn_img_browse = new QPushButton(tr("Select..."));
     m_all_buttons << btn_img_browse;
-    //TODO add menu to button: local file or download Live Linux image
     connect(btn_img_browse, SIGNAL(clicked()), SLOT(selectFile()));
+    QMenu *file_menu = new QMenu;
+    QAction *act1 = file_menu->addAction(tr("Open local file"));
+    connect(act1, SIGNAL(triggered()), SLOT(selectFile()));
+    QAction *act2 = file_menu->addAction(tr("Download Live Linux"));
+    connect(act2, SIGNAL(triggered()), SLOT(showLinuxDownloader()));
+    btn_img_browse->setMenu(file_menu);
     QHBoxLayout *hbox_img_top = new QHBoxLayout;
     hbox_img_top->addWidget(lbl_img_title);
     hbox_img_top->addWidget(btn_img_browse);
@@ -123,16 +128,9 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void
-MainWindow::selectFile()
+MainWindow::selectFile(const QString &file_path)
 {
-    _file_selected = false;
-
-    //Show file dialog (user may select any file)
-    QString file_path = QFileDialog::getOpenFileName(
-        this, tr("Open File"),
-        QDir::homePath(),
-        tr("Image files (*.iso *.img);;All files (*)"));
-    if (file_path.isEmpty()) return;
+    //Check if file is readable/valid
     QFileInfo fi(file_path);
     if (!fi.isReadable())
     {
@@ -170,6 +168,30 @@ MainWindow::selectFile()
     m_file_size = fi.size();
     _file_selected = true;
 
+}
+
+void
+MainWindow::selectFile()
+{
+    _file_selected = false;
+
+    //Show file dialog (user may select any file)
+    QString file_path = QFileDialog::getOpenFileName(
+        this, tr("Open File"),
+        QDir::homePath(),
+        tr("Image files (*.iso *.img);;All files (*)"));
+    if (file_path.isEmpty()) return;
+    selectFile(file_path);
+}
+
+void
+MainWindow::showLinuxDownloader()
+{
+    LinuxDownloader *downloader = new LinuxDownloader(this);
+    connect(downloader, SIGNAL(fileDownloaded(const QString&)),
+        SLOT(selectFile(const QString&)));
+    downloader->setModal(true);
+    downloader->show();
 }
 
 void

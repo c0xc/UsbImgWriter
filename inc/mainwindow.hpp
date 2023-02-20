@@ -53,6 +53,7 @@
 #include "udiskmanager.hpp" //from CapacityTester project
 #include "size.hpp" //from CapacityTester project
 #include "itembutton.hpp"
+#include "linuxdownloader.hpp"
 
 class FileWriter;
 
@@ -67,7 +68,13 @@ public:
 public slots:
 
     void
+    selectFile(const QString &file_path);
+
+    void
     selectFile();
+
+    void
+    showLinuxDownloader();
 
     void
     refreshDrives();
