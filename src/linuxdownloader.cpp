@@ -162,7 +162,8 @@ LinuxDownloader::askDownload(const QString &path)
 
         QTimer::singleShot(0, this, SLOT(close()));
 
-        m_file->deleteLater();
+        m_file->deleteLater(); //not fast enough for close/this->delete
+        m_file = 0; //clear fh immediately because we've scheduled close
         reply->deleteLater();
     }
     );
