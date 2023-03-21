@@ -17,3 +17,6 @@ QT += concurrent
 # network feature is optional - comment this module out to disable the feature
 QT += network
 
+target.path = /usr/local/bin
+INSTALLS += target
+
