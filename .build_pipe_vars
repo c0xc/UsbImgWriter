@@ -1,0 +1,8 @@
+desktop_file=res/usbimgwriter.desktop
+icon_file=res/usbimgwriter.png
+font_file=res/Roboto-Regular.ttf
+
+add_library=libQt5XcbQpa.so
+
+#INSTALL_DEBIAN=libparted-dev
+export NO_QT_BUILD=1
