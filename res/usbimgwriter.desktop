@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=System
+Comment=Write downloaded *.iso, *.img image files to USB thumbdrives or SD cards.
+Exec=usbimgwriter
+Icon=usbimgwriter
+Keywords=drive;image;flash;usb
+Name=USB IMG writer
+Terminal=false
+Type=Application
